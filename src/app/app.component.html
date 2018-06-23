@@ -1,1 +1,27 @@
-<app-reg-form></app-reg-form>
+<app-main></app-main>
+<agm-map
+  [latitude]='mapOptions.lat'
+  [longitude]='mapOptions.lng'
+  [zoom]="mapOptions.zoom"
+  (mapClick)="addCheckin($event)">
+    <div *ngFor="let marker of markers">
+      <agm-marker
+        [latitude]='marker.cord.lat'
+        [longitude]='marker.cord.lng'
+        (markerClick)="showInfo(marker)">
+      </agm-marker>
+    </div>
+</agm-map>
+<!-- <div *ngFor="let marker of markers">
+  <div id="information">
+    <div id="text_information">
+      <span>×</span>
+      <p class="title">{{marker.title}}</p>
+      <p class="rating"></p>
+      <p class="count_coments"></p>
+    </div>
+    <div class="description"></div>
+    <div id="checkin_id"></div>
+    <div id="info_buttons"></div>
+  </div>
+</div> -->

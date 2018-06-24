@@ -3,15 +3,14 @@ import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 
-export class UserService {
+export class CheckinServices {
   url = 'http://localhost:3000';
   constructor(private http: HttpClient) {}
 
-  login(data) {
-    return this.http.post(this.url + '/users/login', data);
+  getAllCheckin() {
+    return this.http.get(this.url + '/api/all_checkins');
   }
-
-  registration(user) {
-    return this.http.post(this.url + '/api/add', user);
+  addCheckin(data) {
+    return this.http.post(this.url + '/api/addcheckin', data);
   }
 }

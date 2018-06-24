@@ -1,13 +1,15 @@
 export class AuthService {
-  private isAuthenticated = false;
+   private isAuthenticated = localStorage.token ? true : false;
 
-  login() {
+  login(user) {
     this.isAuthenticated = true;
+    localStorage.setItem('token', user.token);
+    localStorage.setItem('user', JSON.stringify(user.user));
   }
 
   logout() {
-    this.isAuthenticated = false;
     localStorage.clear();
+    return this.isAuthenticated = false;
   }
 
   isLoggedIn(): boolean {

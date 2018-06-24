@@ -47,12 +47,9 @@ export class LoginComponent implements OnInit {
           this.showMessage (user.message);
         } else {
           this.message.text = '';
-          localStorage.setItem('token', user.token);
-          localStorage.setItem('user', JSON.stringify(user.user));
-          this.authService.login();
-          //   this.router.navigate(['']);
+          this.authService.login(user);
+          this.router.navigate(['/']);
         }
-
       });
   }
 }

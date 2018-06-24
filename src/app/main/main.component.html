@@ -1,0 +1,26 @@
+<div class="header">
+    <h1>Checkin in Vinnitsa</h1>
+    <div class="buttons">
+        <div *ngIf="!isLogined" >
+        <a [routerLink]="'/login'"><button class="btn btn-primary">Login</button></a>
+        <a [routerLink]="'/registration'"><button class="btn btn-primary">Register</button></a>
+      </div>
+      <div *ngIf="isLogined" >
+        <button class="btn btn-primary" (click)="logout()">Logout</button>
+        <a [routerLink]="'/cabinet'"><button class="btn btn-primary">My cabinet</button></a>
+      </div>
+    </div>
+</div>
+<agm-map
+  [latitude]='mapOptions.lat'
+  [longitude]='mapOptions.lng'
+  [zoom]="mapOptions.zoom"
+  (mapClick)="addCheckin($event)">
+    <div *ngFor="let marker of markers">
+      <agm-marker
+        [latitude]='marker.cord.lat'
+        [longitude]='marker.cord.lng'
+        (markerClick)="showInfo(marker)">
+      </agm-marker>
+    </div>
+</agm-map>

@@ -1,55 +1,117 @@
 <p class="text-xs-center">Registration form</p>
-<form>
-    <div class="form-group has-success">
+<div
+  class="alert alert-{{message.type}}" 
+  *ngIf="message.text"
+>{{ message.text }}
+</div>
+<form [formGroup]="form" (submit)="onSubmit()">
+    <div 
+    class="form-group"
+    [ngClass]="{'has-error': form.get('name').invalid && form.get('name').touched}"
+    >
         <label for="name">Name</label>
         <input
             type="text"
             class="form-control underlined"
             id="name"
             placeholder="Enter name"
+            formControlName="name"
         >
-        <span class="form-help-text">Success message.</span>
+        <span
+          class="form-help-text"
+          *ngIf="form.get('name').invalid && form.get('name').touched"
+        >
+          <span *ngIf="form.get('name')['errors']['required']">This field is require, please enter name</span>
+        </span>
     </div>
-    <div class="form-group has-success">
+    <div 
+      class="form-group"
+      [ngClass]="{'has-error': form.get('last_name').invalid && form.get('last_name').touched}"
+      >
         <label for="last_name">Last ame</label>
         <input
             type="text"
             class="form-control underlined"
             id="last_name"
             placeholder="Enter last name"
+            formControlName="last_name"
         >
-        <span class="form-help-text">Success message.</span>
+        <span
+          class="form-help-text"
+          *ngIf="form.get('last_name').invalid && form.get('last_name').touched"
+        >
+          <span *ngIf="form.get('last_name')['errors']['required']">This field is require, please enter last name</span>
+        </span>
     </div>
-    <div class="form-group">
+    <div 
+      class="form-group"
+      [ngClass]="{'has-error': form.get('username').invalid && form.get('username').touched}"
+    >
         <label for="username">Username</label>
         <input
             type="text"
             class="form-control underlined"
             id="username"
             placeholder="Username"
+            formControlName="username"
         >
+        <span
+          class="form-help-text"
+          *ngIf="form.get('username').invalid && form.get('username').touched"
+        >
+          <span *ngIf="form.get('username')['errors']['required']">This field is require, please enter username</span>
+        </span>
     </div>
-    <div class="form-group has-error">
+    <div 
+      class="form-group"
+      [ngClass]="{'has-error': form.get('password').invalid && form.get('password').touched}"
+    >
         <label for="password">Password</label>
         <input
             type="password"
             class="form-control underlined"
             id="password"
             placeholder="Enter password"
+            formControlName="password"
         >
-        <span class="form-help-text">Error message.</span>
+        <span
+        class="form-help-text"
+        *ngIf="form.get('password').invalid && form.get('password').touched"
+        >
+          <span *ngIf="form.get('password')['errors']['required']">Please enter password</span>
+          <span *ngIf="form.get('password')['errors']['minlength']">Password must be more {{form.get('password')['errors']['minlength']['requiredLength']}} symbols</span>
+        </span>
     </div>
-    <div class="form-group has-error">
+    <div 
+    class="form-group"
+    [ngClass]="{'has-error': form.get('conf_password').invalid && form.get('conf_password').touched}"
+    >
         <label for="conf_password">Confirmate Password</label>
         <input
             type="password"
             class="form-control underlined"
             id="conf_password"
             placeholder="Enter password again"
+            formControlName="conf_password"
         >
-        <span class="form-help-text">Error message.</span>
+        <span
+        class="form-help-text"
+        *ngIf="form.get('conf_password').invalid && form.get('conf_password').touched"
+        >
+          <span *ngIf="form.get('conf_password')['errors']['required']">Please enter password again</span>
+          <span *ngIf="form.get('conf_password')['errors']['mismatchedPassword']">Password does not match</span>
+        </span>
     </div>
     <div class="form-group">
-        <button type="submit" class="btn btn-block btn-primary">Sign Up</button>
+        <button 
+          type="submit" 
+          class="btn btn-block btn-primary"
+          [disabled]="form.invalid"
+        >Sign Up</button>
+    </div>
+    <div class="form-group">
+        <p class="text-muted text-xs-center">
+            <a [routerLink]="'/login'">Login!</a> 
+        </p>
     </div>
 </form>

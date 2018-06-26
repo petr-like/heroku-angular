@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 
 export class CheckinServices {
-  url = 'http://chekins-brain.herokuapp.com';
+  url = '//chekins-brain.herokuapp.com';
   constructor(private http: HttpClient) {}
 
   getAllCheckin() { // get all checkin from set markers

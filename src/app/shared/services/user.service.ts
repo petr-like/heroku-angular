@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 
 export class UserService {
-  url = 'http://chekins-brain.herokuapp.com';
+  url = '//chekins-brain.herokuapp.com';
   constructor(private http: HttpClient) {}
 
   login(data) { // check if taken username

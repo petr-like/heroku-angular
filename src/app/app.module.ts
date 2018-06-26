@@ -3,19 +3,30 @@ import { NgModule} from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AgmCoreModule } from '@agm/core';
 
-import { AppComponent } from './app.component';
+// MOdule
 import { AuthModule } from './auth/auth.module';
 import { AppRoutingModule } from './app-routing.module';
+import { SharedModule } from './shared/shared.module';
+
+// Service
 import { UserService } from './shared/services/user.service';
 import { AuthService } from './shared/services/auth.service';
-import { MainComponent } from './main/main.component';
 import { CheckinServices } from './shared/services/checkin.service';
+
+// Component
+import { AppComponent } from './app.component';
+import { MainComponent } from './main/main.component';
+import { InfowindowComponent } from './main/infowindow/infowindow.component';
+import { InfomarkerComponent } from './main/infomarker/infomarker.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainComponent
+    MainComponent,
+    InfowindowComponent,
+    InfomarkerComponent
   ],
   imports: [
     AgmCoreModule.forRoot({
@@ -24,7 +35,8 @@ import { CheckinServices } from './shared/services/checkin.service';
     BrowserModule,
     HttpClientModule,
     AuthModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SharedModule
   ],
   providers: [UserService, AuthService, CheckinServices],
   bootstrap: [AppComponent]

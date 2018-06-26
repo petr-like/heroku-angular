@@ -7,10 +7,11 @@
       </div>
       <div *ngIf="isLogined" >
         <button class="btn btn-primary" (click)="logout()">Logout</button>
-        <a [routerLink]="'/cabinet'"><button class="btn btn-primary">My cabinet</button></a>
       </div>
     </div>
 </div>
+<app-infowindow *ngIf="coords.open"  [outCoord]="coords"></app-infowindow>
+<app-infomarker *ngIf="marker.open"[infoMarker]="marker"></app-infomarker> 
 <agm-map
   [latitude]='mapOptions.lat'
   [longitude]='mapOptions.lng'
@@ -24,3 +25,4 @@
       </agm-marker>
     </div>
 </agm-map>
+

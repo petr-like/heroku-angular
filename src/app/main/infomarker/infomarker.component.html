@@ -1,0 +1,10 @@
+<div [ngClass]="{'open_info': infoMarker.open}" class="information" >
+  <div id="text_information">
+    <p class="title">{{ infoMarker.title }}</p>
+    <p class="rating"><img *ngFor="let i of stars" src="{{imgStar}}" alt=""/></p>
+  </div>
+  <span class="close" (click)="toogleWindow()">×</span>
+    
+  <div class="description">{{ infoMarker.description }}</div>
+  <div id="info_buttons"></div>
+</div>

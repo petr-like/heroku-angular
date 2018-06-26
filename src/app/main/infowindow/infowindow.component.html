@@ -1,0 +1,51 @@
+<div [ngClass]="{'open_info': outCoord.open}" class="information" >
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" >
+    <div id="text_information">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input
+            type="text"
+            class="form-control"
+            id="title"
+            placeholder="Title"
+            formControlName="title"
+        >
+        <span
+          class="form-help-text"
+          *ngIf="form.get('title').invalid && form.get('title').touched"
+        >
+          <span *ngIf="form.get('title')['errors']['required']">Please enter title for your checkin</span>
+        </span>
+      </div>
+      <div class="form-group">
+          <label for="description">Description</label>
+          <textarea
+              class="form-control"
+              id="description"
+              formControlName="description"
+              placeholder="Description"
+              rows="3"
+          ></textarea>
+      </div>
+      <div class="form-group">
+        <label>Rating</label>
+        <select id="rating" formControlName="rating">
+          <option *ngFor=" let i of ratingFrom" [ngValue]="i">{{i}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <button 
+        type="submit" 
+        class="btn btn-block btn-primary"
+        [disabled]="form.invalid"
+      >Add Checkin
+      </button>
+    </div>
+  </form>
+  <span class="close" (click)="toogleWindow()">×</span>
+  <!-- <div *ngIf="infoMarker"></div> -->
+    <p class="title">{{ title }}</p>
+  <div class="description">{{ description }}</div>
+  <div id="info_buttons"></div>
+</div>

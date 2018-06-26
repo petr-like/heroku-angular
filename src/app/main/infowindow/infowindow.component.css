@@ -1,0 +1,41 @@
+.information{
+  width: 0%;
+  height: 100%;
+  right: 0;
+  position: absolute;
+  background: white;
+  box-shadow: -1px 1px 15px 0px grey;
+  z-index: 9999;
+  transition: all 1s 0s;
+  display: block;
+}
+
+.open_info{
+  width: 25%;
+}
+
+#text_information{
+  background: #31a7c1;
+  color: white;
+  padding: 20px;
+}
+
+#text_information .title{
+  font-size: 1.7em;
+}
+
+button{
+  border-top: 2px solid #fff !important;
+}
+span.close{
+  cursor: pointer;
+  position: absolute;
+  font-size: 1.5rem;
+  right: 5px;
+  top: 5px;
+}
+
+select[id='rating']{
+  display: block;
+  color: #000;
+}

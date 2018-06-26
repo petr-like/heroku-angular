@@ -4,14 +4,14 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 
 export class UserService {
-  url = 'http://localhost:3000';
+  url = 'http://chekins-brain.herokuapp.com';
   constructor(private http: HttpClient) {}
 
-  login(data) {
+  login(data) { // check if taken username
     return this.http.post(this.url + '/users/login', data);
   }
 
-  registration(user) {
+  registration(user) { // add new user
     return this.http.post(this.url + '/api/add', user);
   }
 }

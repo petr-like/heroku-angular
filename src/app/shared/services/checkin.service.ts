@@ -4,13 +4,13 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 
 export class CheckinServices {
-  url = 'http://localhost:3000';
+  url = 'http://chekins-brain.herokuapp.com';
   constructor(private http: HttpClient) {}
 
-  getAllCheckin() {
+  getAllCheckin() { // get all checkin from set markers
     return this.http.get(this.url + '/api/all_checkins');
   }
-  addCheckin(data) {
+  addCheckin(data) { // add new checkin
     return this.http.post(this.url + '/api/addcheckin', data);
   }
 }
